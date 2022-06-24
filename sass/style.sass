@@ -1,0 +1,12 @@
+//	Если шрифты подключили локально, то они автоматически конвертируются и попадут в файл fonts.sass, 
+//	тогда расскоментировать строчку ниже
+@import utils/fonts
+
+// При подключении шрифтов через Google Fonts, ломается импорт в скомпиленном css файле,
+// Google fonts поменяли что-то в API, и теперь их ссылки конфликтуют с минимайзерами и компиляторами.
+// Для решения проблемы можно подключить шрифты через link в pug файле
+@import utils/reset
+@import utils/mixins
+@import utils/global
+@import components/header
+@import components/footer

@@ -1,0 +1,39 @@
+@mixin fontFromFile($file_name, $font_name, $weight, $style)
+	@font-face
+		font-family: $font_name
+		font-display: swap
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2")
+		font-weight: #{$weight}
+		font-style: #{$style}
+
+@mixin font($font_name, $size, $weight: 400, $style: normal)
+	font-family: $font_name
+	font-display: swap
+	font-size: #{$size}px
+	font-weight: #{$weight}
+	font-style: #{$style}
+
+@mixin adaptiveProp($property, $start_value, $end_value, $container, $min_width, $type: 0)
+	$addsize: $start_value - $end_value
+	@if $type=='max-width' // Только на ширине меньше контейнера
+		#{$property}: $start_value + px
+		@media (max-width: #{$container + px})
+			#{$property}: calc(#{$end_value}px + #{$addsize} * ((100vw - #{$min_width}px) / (#{$container} - #{$min_width})))
+	@else if $type=='min-width' // Только на ширине больше контейнера
+		#{$property}: $start_value + px
+		@media (min-width: #{$container + px})
+			#{$property}: calc(#{$end_value}px + #{$addsize} * ((100vw - #{$min_width}px) / (#{$container} - #{$min_width})))
+	@else if $type==0 // Всегда
+		#{$property}: calc(#{$end_value}px + #{$addsize} * ((100vw - #{$min_width}px) / (#{$container} - #{$min_width})))
+
+@mixin background($url, $size, $position: 'center', $repeat: 'no-repeat')
+	background-image: url(#{$url})
+	background-size: #{$size}
+	background-position: #{$position}
+	background-repeat: #{$repeat}
+
+@mixin container($container, $padding: 25)
+	width: 100%
+	max-width: calc(#{$container} + #{$padding}px * 2)
+	padding: 0 #{$padding}px
+	margin: 0 auto
