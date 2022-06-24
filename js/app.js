@@ -5,17 +5,23 @@ isWebp()
 // увеличивать количество при клике на + и -   +++++
 const $products = document.querySelectorAll('.product__item')
 const $cartProducts = document.querySelector('.product-cart__products')
-const $cartFullPrice = document.querySelector('.product-cart__fullprice')
-const cart = {}
+const $cartFullPrice = document.querySelector('.product-cart__fullprice span')
+let cart = {}
+if (localStorage.cart) cart = JSON.parse(localStorage.cart)
+
+renderCart()
+
 function countPlus(input) {
 	let countCurrentValue = parseInt(input.value)
 	input.setAttribute('value', countCurrentValue + 1)
 }
+
 function countMinus(input) {
 	let countCurrentValue = parseInt(input.value)
 	if (countCurrentValue === 0) return
 	input.setAttribute('value', countCurrentValue - 1)
 }
+
 function generateHtmlToCart(productId) {
 	const image = cart[productId].image
 	const name = cart[productId].name
@@ -37,17 +43,20 @@ function generateHtmlToCart(productId) {
 
 	return html
 }
+
 function countFullPrice() {
 	let fullPrice = 0
 	for (const id in cart) {
 		fullPrice += cart[id].price * cart[id].count
 	}
-	$cartFullPrice.textContent = `Итого: ${fullPrice}р.`
+	$cartFullPrice.textContent = `${fullPrice}р.`
 }
+
 function renderCart() {
-	console.log(cart)
+	localStorage.setItem('cart', JSON.stringify(cart))
 	if (Object.keys(cart).length === 0) {
 		$cartProducts.style.display = 'none'
+		localStorage.removeItem('cart')
 	} else {
 		$cartProducts.style.display = 'grid'
 	}
