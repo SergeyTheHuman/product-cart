@@ -111,15 +111,3 @@ $cartProducts.addEventListener('click', (event) => {
 		renderCart()
 	}
 })
-/*
-<div class="product-cart__product cart-item">
-	<div class="cart-item__image"><img class="cart-item__img" src="images/fired.jpg"></div>
-	<h3 class="cart-item__title">Запеченные роллы</h3>
-	<div class="cart-item__count count">
-		<button class="count__minus"></button>
-		<input class="count__current" type="text" value="0">
-		<button class="count__plus">+</button>
-	</div>
-	<div class="cart-item__price">300p.</div>
-</div>
-*/
