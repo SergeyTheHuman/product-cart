@@ -2,7 +2,6 @@ import { isWebp } from './components/isWebp.js'
 
 isWebp()
 
-// увеличивать количество при клике на + и -   +++++
 const $products = document.querySelectorAll('.product__item')
 const $cartProducts = document.querySelector('.product-cart__products')
 const $cartFullPrice = document.querySelector('.product-cart__fullprice span')

@@ -1,3 +1,22 @@
+-
+	const products = [
+		{
+			name: `Филадельфия`,
+			image: `fila.jpg`,
+			price: `400p.`,
+		},
+		{
+			name: `Запеченные роллы`,
+			image: `fired.jpg`,
+			price: `300p.`,
+		},
+		{
+			name: `Темпура`,
+			image: `tempura.jpg`,
+			price: `350p.`,
+		},
+	]
+
 doctype html
 html(lang="ru")
 	head
@@ -14,36 +33,17 @@ html(lang="ru")
 				.product-cart__fullprice Итого: #[span 0р.]
 				button.product-cart__order Заказать
 			.products
-				.product__item(data-id="1")
-					.product__item-image
-						img(src='@img/fila.jpg').product__item-img
-					h3.product__item-title Филадельфия
-					.product__item-count.count
-						button.count__minus
-						input(type='text' value=0).count__current
-						button.count__plus +
-					.product__item-price 400p.
-					button.product__item-add Добавить в корзину
-				.product__item(data-id="2")
-					.product__item-image
-						img(src='@img/fired.jpg').product__item-img
-					h3.product__item-title Запеченные роллы
-					.product__item-count.count
-						button.count__minus
-						input(type='text' value=0).count__current
-						button.count__plus +
-					.product__item-price 300p.
-					button.product__item-add Добавить в корзину
-				.product__item(data-id="3")
-					.product__item-image
-						img(src='@img/tempura.jpg').product__item-img
-					h3.product__item-title Темпура
-					.product__item-count.count
-						button.count__minus
-						input(type='text' value=0).count__current
-						button.count__plus +
-					.product__item-price 350p.
-					button.product__item-add Добавить в корзину
-
-
+				- let id = 1
+				each product in products
+					.product__item(data-id= id)
+						- id++
+						.product__item-image
+							img(src= `@img/${product.image}`).product__item-img
+						h3.product__item-title= product.name
+						.product__item-count.count
+							button.count__minus
+							input(type='text' value=0).count__current
+							button.count__plus +
+						.product__item-price= product.price
+						button.product__item-add Добавить в корзину
 		include utils/scripts
