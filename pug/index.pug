@@ -8,7 +8,69 @@ html(lang="ru")
 		title Main Page
 	body
 		.wrapper
-			include components/header
+			.product-cart
+				h3.product-cart__title Ваш заказ
+				.product-cart__products
+					.product-cart__product.cart-item
+						.cart-item__image
+							img(src='@img/fila.jpg').cart-item__img
+						h3.cart-item__title Филадельфия
+						.cart-item__count.count
+							button.count__minus
+							input(type='text' value=0).count__current
+							button.count__plus +
+						.cart-item__price 400p.
+					.product-cart__product.cart-item
+						.cart-item__image
+							img(src='@img/fired.jpg').cart-item__img
+						h3.cart-item__title Запеченные роллы
+						.cart-item__count.count
+							button.count__minus
+							input(type='text' value=0).count__current
+							button.count__plus +
+						.cart-item__price 300p.
+					.product-cart__product.cart-item
+						.cart-item__image
+							img(src='@img/tempura.jpg').cart-item__img
+						h3.cart-item__title Темпура
+						.cart-item__count.count
+							button.count__minus
+							input(type='text' value=0).count__current
+							button.count__plus +
+						.cart-item__price 350p.
+				.product-cart__fullprice Итого: 0р.
+				button.product-cart__order Заказать
+			.products
+				.product__item
+					.product__item-image
+						img(src='@img/fila.jpg').product__item-img
+					h3.product__item-title Филадельфия
+					.product__item-count.count
+						button.count__minus
+						input(type='text' value=0).count__current
+						button.count__plus +
+					.product__item-price 400p.
+					button.product__item-add Добавить в корзину
+				.product__item
+					.product__item-image
+						img(src='@img/fired.jpg').product__item-img
+					h3.product__item-title Запеченные роллы
+					.product__item-count.count
+						button.count__minus
+						input(type='text' value=0).count__current
+						button.count__plus +
+					.product__item-price 300p.
+					button.product__item-add Добавить в корзину
+				.product__item
+					.product__item-image
+						img(src='@img/tempura.jpg').product__item-img
+					h3.product__item-title Темпура
+					.product__item-count.count
+						button.count__minus
+						input(type='text' value=0).count__current
+						button.count__plus +
+					.product__item-price 350p.
+					button.product__item-add Добавить в корзину
 
-			include components/footer
+
 		include utils/scripts
